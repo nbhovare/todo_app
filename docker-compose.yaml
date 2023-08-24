@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+#service for application
+  myapp:
+   image: myapp:0.1
+   volumes:
+    - ./src/:/var/www/html/
+   ports:
+    - 80:80
+
+#service for mysql database
+  dbmysql:
+   image: mysql:latest
+   environment:
+    MYSQL_ROOT_PASSWORD: secret
+    MYSQL_DATABASE: todos
+    MYSQL_USER: root 
+    MYSQL_PASSWORD: secret
+   volumes:
+     - mysql_data:/var/lib/mysql
+
+#service for phpmyadmin for accessing mysql via broswer user interface
+  phpmyadmin:
+   image: phpmyadmin/phpmyadmin
+   ports:
+    - 8001:80   
+   environment:
+    PMA_HOST: dbmysql
+    PMA_PORT: 3306
+volumes:
+ mysql_data:
