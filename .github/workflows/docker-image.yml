@@ -22,4 +22,4 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag todo-app-gActions:$(date +%s)      
+      run: docker build . --file Dockerfile --tag todo-app-g_actions:$(date +%s)      
