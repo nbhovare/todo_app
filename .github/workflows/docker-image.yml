@@ -21,15 +21,8 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build Docker Image
-      id: buildAndPushImage
-      uses: abhishek-070/docker-image-build-push-action@v1.0
+    - name: Build and push
+      uses: docker/build-push-action@v5
       with:
-        registry_url: 'docker.io'
-        repository_name: 'nihalblog25'
-        user_name: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-        image_version: 'v1.0'
-        docker_file: '.'
-    - name: Get pre step result output image_pull_url
-      run: echo "The time was ${{ steps.buildAndPushImage.outputs.image_pull_url }}"
+        push: true
+        tags: nihalblog25/todo-app-g_actions:latest
