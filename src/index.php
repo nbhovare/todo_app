@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>Todo List</title>
+    <title>Todo List Application</title>
 </head>
 <body>
 <div id="loader" class="loader"></div>
